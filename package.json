@@ -1,0 +1,16 @@
+{
+  "name": "electron-blank-canvas",
+  "version": "1.0.0",
+  "description": "To Start Electron App",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron app.js",
+    "build": "npx electron-packager . --icon assets/icon.icns --out=packages"
+  },
+  "devDependencies": {
+    "electron": "^9.4.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
