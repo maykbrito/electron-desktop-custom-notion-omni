@@ -1,4 +1,5 @@
 const { app, BrowserWindow, screen, globalShortcut } = require("electron");
+const path = require('path');
 
 let win = null;
 app.allowRendererProcessReuse = true;
@@ -14,10 +15,12 @@ function createWindow() {
         frame: false,
         titleBarStyle: "customButtonsOnHover",
         webPreferences: {
-            nodeIntegration: true,
+            nodeIntegration: false,
+            preload: path.join(__dirname, "preload.js") // use a preload script
         },
     });
 
+    win.loadURL('https://notion.so')
     // win.loadFile("public/index.html");
     // win.webContents.toggleDevTools()
 
