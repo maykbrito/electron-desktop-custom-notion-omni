@@ -3,7 +3,7 @@
 Inject some CSS to custom Notion colors ;)
 
 ---
-## Usage
+## 4 Steps to Use it.
 
 1. Install
 ```sh
@@ -15,7 +15,10 @@ npm i
 npm run build
 ```
 
-3. Put your Notion in Dark Mode ;)
+3. Run your new app. 
+_It will be at dir ./packages_
+
+4. Put your Notion in Dark Mode ;)
 
 ---
 ## Get more content!
@@ -24,4 +27,4 @@ npm run build
 * [maykbrito.dev](https://maykbrito.dev)
 
 ---
-Thank you 💛
+Star this project 🌟 Thank you 💛
