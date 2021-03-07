@@ -1,7 +1,7 @@
 {
-  "name": "electron-blank-canvas",
+  "name": "electron-notion-omni",
   "version": "1.0.0",
-  "description": "To Start Electron App",
+  "description": "Inject some CSS to custom Notion colors ;)",
   "main": "app.js",
   "scripts": {
     "start": "electron app.js",
