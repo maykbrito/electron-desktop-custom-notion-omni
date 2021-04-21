@@ -3,15 +3,15 @@ const customStyle = `
     /* #1C1714: launchbase */
     --dark: 28, 23, 20;
     --dark-1: rgb(var(--dark));
-    -dark-2: rgba(var(--dark), .8);
+    --dark-2: rgba(var(--dark), .8);
     --dark-3: rgba(var(--dark), .6);
     --dark-4: rgba(var(--dark), .4);
     --dark-4: rgba(var(--dark), .2);
 
     /* #FD951F: 253, 149, 31  : launchbase */
     /* #67e480: 103, 228, 128 : omni */
-      
-    --primary: 103, 228, 128; 
+
+    --primary: 103, 228, 128;
     --primary-1: rgb(var(--primary));
     --primary-2: rgba(var(--primary), 0.8);
     --primary-3: rgba(var(--primary), 0.6);
@@ -32,8 +32,8 @@ const customStyle = `
       color: #eee!important
   }
 
-  body.dark #notion-app > div > div > div.notion-sidebar-container > div:nth-child(1) > div:nth-child(2) > div > div:nth-child(1), 
-  body.dark #notion-app > div > div > div.notion-sidebar-container > div:nth-child(1) > div:nth-child(2) > div > div:nth-child(5) > div:nth-child(1) > span > div > div > div:nth-child(2), 
+  body.dark #notion-app > div > div > div.notion-sidebar-container > div:nth-child(1) > div:nth-child(2) > div > div:nth-child(1),
+  body.dark #notion-app > div > div > div.notion-sidebar-container > div:nth-child(1) > div:nth-child(2) > div > div:nth-child(5) > div:nth-child(1) > span > div > div > div:nth-child(2),
   body.dark .notion-topbar {
       color: #fff!important;
       background-color: var(--dark-1)!important;
