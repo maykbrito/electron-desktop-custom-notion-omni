@@ -1,25 +1,27 @@
 const customStyle = `
   :root {
-    /* #1C1714: launchbase */
-    --dark: 28, 23, 20;
-    --dark-1: rgb(var(--dark));
-    -dark-2: rgba(var(--dark), .8);
-    --dark-3: rgba(var(--dark), .6);
-    --dark-4: rgba(var(--dark), .4);
-    --dark-4: rgba(var(--dark), .2);
+    /* Dark */
+    --dark-hue: 253;
 
-    /* #FD951F: 253, 149, 31  : launchbase */
-    /* #67e480: 103, 228, 128 : omni */
+    --dark: hsl(var(--dark-hue), 24%, 10%);
+    --dark-1: hsl(var(--dark-hue), 24%, 14%);
+    --dark-2: hsl(var(--dark-hue), 24%, 18%);
+    --dark-3: hsl(var(--dark-hue), 24%, 22%);
+    --dark-4: hsl(var(--dark-hue), 24%, 26%);
+    --dark-5: hsl(var(--dark-hue), 24%, 30%);
+
+    /* Primary */
+    --primary-hue: 132;
       
-    --primary: 103, 228, 128; 
-    --primary-1: rgb(var(--primary));
-    --primary-2: rgba(var(--primary), 0.8);
-    --primary-3: rgba(var(--primary), 0.6);
-    --primary-4: rgba(var(--primary), 0.4);
-    --primary-5: rgba(var(--primary), 0.2);
+    --primary: hsl(var(--primary-hue), 70%, 65%); 
+    --primary-1: hsl(var(--primary-hue), 70%, 55%); 
+    --primary-2: hsl(var(--primary-hue), 70%, 45%); 
+    --primary-3: hsl(var(--primary-hue), 70%, 35%); 
+    --primary-4: hsl(var(--primary-hue), 70%, 25%); 
+    --primary-5: hsl(var(--primary-hue), 70%, 15%); 
   }
 
-  body.dark .notion-sidebar-container {
+  body.dark #notion-app .notion-sidebar {
       background-color: var(--dark-1) !important;
       color: #fff !important;
   }
@@ -83,6 +85,25 @@ const customStyle = `
 
   body.dark #notion-app .notion-topbar > div > div:nth-child(2){
     display:none !important;
+  }
+
+  /* links clickable */
+  body.dark .notion-frame .notion-selectable a {
+    background: var(--dark-1) !important;
+  }
+
+  /* help button */
+  body.dark #notion-app > div > div.notion-cursor-listener > div.notion-help-button {
+    background: var(--dark-1) !important;
+  }
+
+  /* every style that has rgb(47, 52, 55) as bg */
+  [style*="background: rgb(47, 52, 55);"] {
+    background: var(--dark-1) !important;
+  }
+  /* when hovering some elements */
+  [style*="background: rgb(71, 76, 80);"] {
+    background: var(--dark-3) !important;
   }
 `;
 
