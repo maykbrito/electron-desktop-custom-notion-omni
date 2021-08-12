@@ -11,7 +11,6 @@ function createWindow() {
     win = new BrowserWindow({
         width: dimensions.width,
         height: dimensions.height,
-        transparent: true,
         frame: false,
         titleBarStyle: "customButtonsOnHover",
         webPreferences: {
@@ -21,8 +20,6 @@ function createWindow() {
     });
 
     win.loadURL('https://notion.so')
-    // win.loadFile("public/index.html");
-    // win.webContents.toggleDevTools()
 
 }
 
