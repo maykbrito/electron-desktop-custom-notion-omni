@@ -1,4 +1,4 @@
-const { app, BrowserWindow, screen, globalShortcut } = require("electron");
+const { app, BrowserWindow, screen, globalShortcut, ipcMain } = require("electron");
 const path = require('path');
 
 let win = null;
@@ -44,6 +44,10 @@ app.on("window-all-closed", () => {
 });
 
 app.on("activate", recreateWindow);
+
+ipcMain.on('request-app-path', (event,arg) => {
+    event.returnValue = app.getAppPath()
+})
 
 function recreateWindow() {
     // On macOS it's common to re-create a window in the app when the
