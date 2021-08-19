@@ -5,12 +5,17 @@
   "main": "app.js",
   "scripts": {
     "start": "electron app.js",
-    "build": "npx electron-packager . --icon assets/icon.icns --out=packages"
+    "build": "npx electron-packager . --icon assets/icon.icns --out=packages",
+    "build-win64": "npx electron-packager . Notion --overwrite --out=packages --platform=win32 --arch=x64 app-version=1.0 --icon=assets/icon.ico"
+
   },
   "devDependencies": {
     "electron": "^9.4.0"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "electron-window-state": "^5.0.3"
+  }
 }

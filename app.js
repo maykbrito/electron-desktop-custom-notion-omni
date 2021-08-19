@@ -1,5 +1,6 @@
 const { app, BrowserWindow, screen, globalShortcut } = require("electron");
-const path = require('path');
+const path = require("path");
+const windowStateKeeper = require("electron-window-state");
 
 let win = null;
 app.allowRendererProcessReuse = true;
@@ -8,19 +9,27 @@ function createWindow() {
     const mainScreen = screen.getPrimaryDisplay();
     const dimensions = mainScreen.size;
 
+    const mainWindowState = windowStateKeeper({
+        defaultWidth: dimensions.width,
+        defaultHeight: dimensions.height,
+    });
+
     win = new BrowserWindow({
-        width: dimensions.width,
-        height: dimensions.height,
+        x: mainWindowState.x,
+        y: mainWindowState.y,
+        width: mainWindowState.width,
+        height: mainWindowState.height,
         frame: false,
         titleBarStyle: "customButtonsOnHover",
         webPreferences: {
             nodeIntegration: false,
-            preload: path.join(__dirname, "preload.js") // use a preload script
+            preload: path.join(__dirname, "preload.js"), // use a preload script
         },
     });
 
-    win.loadURL('https://notion.so')
+    mainWindowState.manage(win);
 
+    win.loadURL("https://notion.so");
 }
 
 function createShortcuts() {
