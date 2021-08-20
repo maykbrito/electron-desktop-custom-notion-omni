@@ -35,3 +35,11 @@
     height: 20px;
     margin: auto;
 }
+
+.notion-topbar > div:first-child{
+    -webkit-app-region: drag;
+}
+
+.notion-topbar > div:first-child *{
+    -webkit-app-region: no-drag;
+}
