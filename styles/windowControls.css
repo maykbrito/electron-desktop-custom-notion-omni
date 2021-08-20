@@ -1,0 +1,37 @@
+#window-controls-wrapper{
+    position: fixed;
+    background-color: #000;
+    height: 35px;
+    top: 0;
+    right: 0;
+    display: flex;
+    z-index: 2;
+    margin-top: -35px;
+    transition: 300ms;
+}
+
+#window-controls-wrapper.active{
+    margin-top: 0 !important;
+}
+
+#window-controls-wrapper > .button{
+    width: 45px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#window-controls-wrapper > .button:hover{
+    background-color: #505050;
+}
+
+#window-controls-wrapper > .button:hover:last-child{
+    background-color: rgba(255, 0, 0, 0.712);
+}
+
+#window-controls-wrapper > .button > svg{
+    width: 20px;
+    height: 20px;
+    margin: auto;
+}
