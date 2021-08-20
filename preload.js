@@ -2,9 +2,7 @@ const { ipcRenderer } = require('electron')
 const path = require('path')
 const fs = require('fs')
 const appPath = ipcRenderer.sendSync('request-app-path')
-const cssContent = fs.readFileSync(path.resolve(appPath, 'styles', 'style.css'))
 
-window.addEventListener("DOMContentLoaded", () => {
 
 function createWindowControls() {
   const iconsFolder = path.resolve(appPath, 'assets', 'windowsIcons')
@@ -23,7 +21,14 @@ function createWindowControls() {
   </div>`
   return wrapper
 }
+
+function injectCSS(cssPath) {
+  const cssContent = fs.readFileSync(cssPath)
   const styleEl = document.createElement("style");
   styleEl.innerHTML = cssContent
-  document.head.append(styleEl);
+  document.head.append(styleEl)
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  injectCSS(path.resolve(appPath, 'styles', 'style.css'))
 });
