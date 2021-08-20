@@ -31,4 +31,25 @@ function injectCSS(cssPath) {
 
 window.addEventListener("DOMContentLoaded", () => {
   injectCSS(path.resolve(appPath, 'styles', 'style.css'))
+  injectCSS(path.resolve(appPath, 'styles', 'windowControls.css'))
+  const windowControlsMenu = createWindowControls()
+  document.body.appendChild(windowControlsMenu)
+
+  const hideMenu = () => windowControlsMenu.classList.remove('active')
+
+  window.addEventListener('mousemove', event => {
+    const { pageX, pageY } = event
+    const { x, height, y } = windowControlsMenu.getBoundingClientRect()
+    if(pageY <= 10 && pageX > x){
+      if(!windowControlsMenu.classList.contains('active')){
+        windowControlsMenu.classList.add('active')
+      }
+    }
+
+    if(pageY > y + height + 10 || pageX < x){
+      if(windowControlsMenu.classList.contains('active')){
+        hideMenu()
+      }
+    }
+  })
 });
