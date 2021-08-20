@@ -52,4 +52,22 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     }
   })
+
+    const minimize_btn = document.getElementById("minimize")
+    minimize_btn.onclick = ()=> {
+      ipcRenderer.send('minimize') 
+      hideMenu()
+    }
+
+    const maxime_btn = document.getElementById("expand")
+    maxime_btn.onclick = () => {
+      ipcRenderer.send('expand')
+      hideMenu()
+    }
+
+    const close_btn = document.getElementById("close")
+    close_btn.onclick = () => {
+      ipcRenderer.send('close')
+      hideMenu()
+    }
 });
