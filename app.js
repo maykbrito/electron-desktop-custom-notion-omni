@@ -1,4 +1,4 @@
-const { app, BrowserWindow, screen, globalShortcut, shell } = require("electron");
+const { app, BrowserWindow, screen, globalShortcut, shell, ipcMain } = require("electron");
 const path = require("path");
 const windowStateKeeper = require("electron-window-state");
 
@@ -79,6 +79,10 @@ function recreateWindow() {
         setTimeout(createWindow, 200);
     }
 }
+
+ipcMain.on('request-app-path', (event,arg) => {
+    event.returnValue = app.getAppPath()
+})
 
 /**
  *
