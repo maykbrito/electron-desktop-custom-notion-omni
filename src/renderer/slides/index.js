@@ -3,7 +3,6 @@ const { render, $slide, getMainFrame } = require('./render.js')
 
 let data
 let slideIndex = 0
-let blockIndex = 0
 let isRunning = false
 let mainFrame
 
@@ -15,11 +14,6 @@ window.addEventListener('keydown', function (ev) {
 })
 
 function start() {
-  if (mainFrame) {
-    mainFrame.style.display = 'flex'
-    return
-  }
-
   data = getSlides()
   mainFrame = getMainFrame()
 
