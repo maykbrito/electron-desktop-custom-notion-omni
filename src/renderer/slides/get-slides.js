@@ -3,7 +3,7 @@ module.exports.getSlides = function () {
     ...document.querySelectorAll('.notion-page-content > div')
   ]
   const newSlides = pageContent.filter(item =>
-    item.classList.contains('notion-header-block')
+    item.classList.contains('notion-divider-block')
   )
 
   const newSlide = block => ({
