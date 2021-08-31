@@ -3,6 +3,7 @@ module.exports.createMainFrame = function () {
   mainFrame.classList.add('notion-frame')
   mainFrame.classList.add('notion-dark-theme')
   mainFrame.style.color = 'rgba(255, 255, 255, 0.9)'
+  mainFrame.style.fill = 'rgba(255, 255, 255, 0.9)'
   mainFrame.style.position = 'absolute'
   mainFrame.style.top = '0'
   mainFrame.style.bottom = '0'
