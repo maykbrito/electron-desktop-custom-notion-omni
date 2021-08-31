@@ -189,3 +189,32 @@ body.dark
 .notion-code-block .token.number {
   color: var(--blue);
 }
+
+.notion-code-block .token.string {
+  color: var(--yellow);
+}
+
+/* colors */
+[style*='color: rgb(226, 85, 161);'] {
+  color: var(--pink) !important;
+}
+
+[style*='color: rgb(77, 171, 154);'] {
+  color: var(--green) !important;
+}
+
+[style*='color: rgb(255, 163, 68);'] {
+  color: var(--orange) !important;
+}
+
+[style*='color: rgb(255, 220, 73);'] {
+  color: var(--yellow) !important;
+}
+
+[style*='color: rgb(82, 156, 202);'] {
+  color: var(--blue) !important;
+}
+
+[style*='color: rgb(154, 109, 215);'] {
+  color: var(--purple) !important;
+}
