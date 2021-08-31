@@ -23,7 +23,7 @@ module.exports.getSlides = function () {
         return currentSlide
       }
 
-      currentSlide.blocks.push(block)
+      currentSlide && currentSlide.blocks.push(block)
     })
     .filter(Boolean)
 
