@@ -173,8 +173,14 @@ body.dark .notion-code-block {
 body.dark .notion-code-block .token.keyword,
 body.dark .notion-code-block .token.operator,
 body.dark .notion-code-block .token.unit,
-body.dark .notion-code-block .token.tag {
+body.dark .notion-code-block .token.tag,
+body.dark .notion-code-block .token.selector,
+body.dark .notion-code-block .token.important {
   color: var(--pink);
+}
+
+body.dark .notion-code-block .token.property {
+  color: var(--purple);
 }
 
 body.dark .notion-code-block .token.comment {
