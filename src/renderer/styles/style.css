@@ -235,3 +235,17 @@ body.dark
 .slides > div > div {
   max-width: 100% !important;
 }
+
+/* animate slides */
+.slides.notion-frame .appear {
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: appear 0.3s ease-in-out forwards;
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
