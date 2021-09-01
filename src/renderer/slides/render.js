@@ -13,10 +13,8 @@ module.exports.getMainFrame = () => {
 }
 
 module.exports.render = ($slide, currentSlide) => {
-  console.log('currentSlide', currentSlide)
   $slide.innerHTML = ''
   if (!currentSlide) return
-  $slide.appendChild(currentSlide.title.cloneNode(true))
   currentSlide.blocks.forEach(block => {
     $slide.appendChild(block.cloneNode(true))
   })
