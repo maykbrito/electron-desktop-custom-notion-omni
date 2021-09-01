@@ -5,8 +5,7 @@ const windowStateKeeper = require("electron-window-state");
 let win = null;
 app.allowRendererProcessReuse = true;
 
-const iconExtension = process.platform === "darwin" ? "icns" :
-    process.platform === "win32" ? "ico" : "png"
+const iconExtension = process.platform === "win32" ? "ico" : "png"
 
 function createWindow() {
     const mainScreen = screen.getPrimaryDisplay();
@@ -23,7 +22,7 @@ function createWindow() {
         width: mainWindowState.width,
         height: mainWindowState.height,
         frame: false,
-        icon: path.resolve(app.getAppPath(), 'assets', `icon.${iconExtension}`),
+        icon: process.platform === "darwin" ? undefined : path.resolve(app.getAppPath(), 'assets', `icon.${iconExtension}`),
         titleBarStyle: "customButtonsOnHover",
         webPreferences: {
             nodeIntegration: false,
@@ -127,3 +126,5 @@ const WindowVisibility = {
         this.isVisible = !this.isVisible;
     },
 };
+
+console.log(app.getPath('userData'))
