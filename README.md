@@ -27,11 +27,25 @@ npm run build
 
 ---
 
-## Get more content!
+## 📽 Slide Presentation
+
+You can use this app as slide presentation.
+
+### 🤔 How?
+
+1. Prepare your presentation
+
+   - Each divider will be consider as new slide block
+
+2. Toggle presentation with `SHIFT+ESC
+
+---
+
+## 🔗 Get more content!
 
 - [Youtube](https://www.youtube.com/maykbrito)
 - [maykbrito.dev](https://maykbrito.dev)
 
 ---
 
-Star this project 🌟 Thank you 💛
+If this project helps you, please leave your star 🌟 Thank you 💛
