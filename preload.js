@@ -29,8 +29,7 @@ function injectCSS(cssPath) {
   document.head.append(styleEl)
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-  injectCSS(path.resolve(appPath, 'styles', 'style.css'))
+function createWindowsMenu(){
   injectCSS(path.resolve(appPath, 'styles', 'windowControls.css'))
   const windowControlsMenu = createWindowControls()
   document.body.appendChild(windowControlsMenu)
@@ -70,4 +69,11 @@ window.addEventListener("DOMContentLoaded", () => {
       ipcRenderer.send('close')
       hideMenu()
     }
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  injectCSS(path.resolve(appPath, 'styles', 'style.css'))
+  if(process.platform !== "darwin"){
+    createWindowsMenu()
+  }
 });
