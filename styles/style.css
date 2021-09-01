@@ -172,7 +172,8 @@ body.dark .notion-code-block {
 
 body.dark .notion-code-block .token.keyword,
 body.dark .notion-code-block .token.operator,
-body.dark .notion-code-block .token.unit {
+body.dark .notion-code-block .token.unit,
+body.dark .notion-code-block .token.tag {
   color: var(--pink);
 }
 
@@ -188,11 +189,9 @@ body.dark .notion-code-block .token.parameter {
   color: var(--orange);
 }
 
-body.dark .notion-code-block .token.function {
-  color: var(--green);
-}
-
-body.dark .notion-code-block .token.function {
+body.dark .notion-code-block .token.function,
+body.dark .notion-code-block .token.attr-name,
+body.dark .notion-code-block .token.punctuation.attr-equals {
   color: var(--green);
 }
 
@@ -200,7 +199,8 @@ body.dark .notion-code-block .token.number {
   color: var(--blue);
 }
 
-body.dark .notion-code-block .token.string {
+body.dark .notion-code-block .token.string,
+body.dark .notion-code-block .token.attr-value {
   color: var(--yellow);
 }
 
