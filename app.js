@@ -5,6 +5,8 @@ const windowStateKeeper = require("electron-window-state");
 let win = null;
 app.allowRendererProcessReuse = true;
 
+const iconExtension = process.platform === "win32" ? "ico" : "png"
+
 function createWindow() {
     const mainScreen = screen.getPrimaryDisplay();
     const dimensions = mainScreen.size;
@@ -20,6 +22,7 @@ function createWindow() {
         width: mainWindowState.width,
         height: mainWindowState.height,
         frame: false,
+        icon: process.platform === "darwin" ? undefined : path.resolve(app.getAppPath(), 'assets', `icon.${iconExtension}`),
         titleBarStyle: "customButtonsOnHover",
         webPreferences: {
             nodeIntegration: false,
@@ -84,6 +87,25 @@ ipcMain.on('request-app-path', (event,arg) => {
     event.returnValue = app.getAppPath()
 })
 
+ipcMain.on('minimize',(event,arg)=>{
+    const win = BrowserWindow.getFocusedWindow()
+    win.minimize()
+})
+
+ipcMain.on('expand', (event,arg) => {
+    const win = BrowserWindow.getFocusedWindow()
+    if(win.isMaximized()){
+        win.restore()
+    }else{
+        win.maximize()
+    }
+})
+
+ipcMain.on('close',(event,arg) => {
+    const win = BrowserWindow.getFocusedWindow()
+    win.close()
+})
+
 /**
  *
  *  Toggle Window Visibility
@@ -104,3 +126,5 @@ const WindowVisibility = {
         this.isVisible = !this.isVisible;
     },
 };
+
+console.log(app.getPath('userData'))
