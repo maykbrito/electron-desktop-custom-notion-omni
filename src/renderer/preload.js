@@ -77,5 +77,8 @@ window.addEventListener('DOMContentLoaded', () => {
   if (process.platform !== 'darwin') {
     createWindowsMenu()
   }
+
+  /** slides feat */
+  injectCSS(path.resolve(appPath, 'src', 'renderer', 'styles', 'slides.css'))
   require('./slides/index.js')
 })
