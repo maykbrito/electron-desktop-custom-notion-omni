@@ -1,0 +1,30 @@
+/* slides */
+.slides.dark.notion-frame {
+  background-color: var(--dark-2) !important;
+}
+
+.slides.notion-frame {
+  background-color: white !important;
+}
+
+.slides > div {
+  padding: 2rem 4rem 0;
+}
+
+.slides > div > div {
+  max-width: 100% !important;
+}
+
+/* animate slides */
+.slides.notion-frame .appear {
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: appear 0.3s ease-in-out forwards;
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
