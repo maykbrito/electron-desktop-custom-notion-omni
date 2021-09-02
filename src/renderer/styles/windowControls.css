@@ -40,6 +40,6 @@
     -webkit-app-region: drag;
 }
 
-.notion-topbar > div:first-child *{
+.notion-topbar-action-buttons{
     -webkit-app-region: no-drag;
 }
