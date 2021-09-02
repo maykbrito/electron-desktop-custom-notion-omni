@@ -5,9 +5,38 @@
     top: 0;
     right: 0;
     display: flex;
-    z-index: 2;
+    z-index: 100;
     margin-top: -35px;
     transition: 300ms;
+}
+
+#window-controls-wrapper[data-platform = "darwin"]{
+    top: 0;
+    left: 0;
+    right: auto;
+    height: 25px;
+    width: 70px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#window-controls-wrapper[data-platform = "darwin"].active{
+    top: 5px;
+    left: 5px;
+}
+
+#window-controls-wrapper[data-platform = "darwin"] > #close{
+    background-color: #EF6A5F;
+}
+
+#window-controls-wrapper[data-platform = "darwin"] > #expand{
+    background-color: #F7BE4F;
+}
+
+#window-controls-wrapper[data-platform = "darwin"] > #minimize{
+    background-color: #61C957;
 }
 
 #window-controls-wrapper.active{
@@ -20,6 +49,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#window-controls-wrapper > .mac-button {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin: 3px;
 }
 
 #window-controls-wrapper > .button:hover{
@@ -41,5 +77,9 @@
 }
 
 .notion-topbar-action-buttons{
+    -webkit-app-region: no-drag;
+}
+
+[style*="flex-shrink: 0; width: 48px; height: 48px; margin: -12px -6px -12px -12px; padding: 12px;"]{
     -webkit-app-region: no-drag;
 }
