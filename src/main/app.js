@@ -124,9 +124,23 @@ ipcMain.on('expand', (event, arg) => {
   }
 })
 
+ipcMain.on('fullscreen', () =>{
+  const win = BrowserWindow.getFocusedWindow()
+  if(!win.isFullScreen()){
+    win.setFullScreen(true)
+  }else{
+    win.setFullScreen(false)
+    win.restore()
+  }
+})
+
 ipcMain.on('close', (event, arg) => {
   const win = BrowserWindow.getFocusedWindow()
-  win.close()
+  if(isMacOS){
+    win.hide()
+  }else{
+    win.close()
+  }
 })
 
 /**

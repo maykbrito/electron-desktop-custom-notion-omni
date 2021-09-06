@@ -22,8 +22,8 @@ function createWindowControls() {
   wrapper.innerHTML = isMac ?
     `
   <div class="mac-button" id="close"></div>
-  <div class="mac-button" id="expand"></div>
-  <div class="mac-button" id="minimize"></div>`
+  <div class="mac-button" id="minimize"></div>
+  <div class="mac-button" id="fullscreen"></div>`
     : `
   <div class="button" id="minimize">
     ${loadSVG(iconsFolder, 'minimize.svg')}
@@ -73,16 +73,21 @@ function addWindowControlsFunctions(menu) {
     hideMenu()
   }
 
-  const maxime_btn = document.getElementById('expand')
-  maxime_btn.onclick = () => {
-    ipcRenderer.send('expand')
-    hideMenu()
-  }
-
   const close_btn = document.getElementById('close')
   close_btn.onclick = () => {
     ipcRenderer.send('close')
     hideMenu()
+  }
+
+  if(isMac){
+    const fullscreen_btn = document.getElementById('fullscreen')
+    fullscreen_btn.onclick = () => ipcRenderer.send('fullscreen')
+  }else{
+    const maxime_btn = document.getElementById('expand')
+    maxime_btn.onclick = () => {
+      ipcRenderer.send('expand')
+      hideMenu()
+    }
   }
 }
 
