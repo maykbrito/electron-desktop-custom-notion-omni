@@ -9,6 +9,10 @@ const {
 const path = require('path')
 const windowStateKeeper = require('electron-window-state')
 
+const isMacOS = process.argv.includes("--mac") || process.platform === 'darwin'
+console.log(process.argv);
+// const isMacOS = true // Testando fora do Mac
+
 let win = null
 app.allowRendererProcessReuse = true
 
@@ -30,7 +34,7 @@ function createWindow() {
     height: mainWindowState.height,
     frame: false,
     icon:
-      process.platform === 'darwin'
+      isMacOS === 'darwin'
         ? undefined
         : path.resolve(app.getAppPath(), 'assets', `icon.${iconExtension}`),
     titleBarStyle: 'customButtonsOnHover',
@@ -76,7 +80,7 @@ if (!isUnicInstance) {
     // This method will be called when Electron has finished
     // initialization and is ready to create browser windows.
     // Some APIs can only be used after this event occurs.
-app.whenReady().then(setTimeout(createWindow, 200)).then(createShortcuts);
+    app.whenReady().then(setTimeout(createWindow, 200)).then(createShortcuts);
 }
 
 app.on('second-instance', () => {
@@ -84,6 +88,9 @@ app.on('second-instance', () => {
     if (win.isMinimized()){
       win.restore()
     } 
+    if(!win.isVisible()){
+      win.show()
+    }
     win.focus()
 })
 
@@ -108,6 +115,10 @@ function recreateWindow() {
 
 ipcMain.on('request-app-path', (event, arg) => {
   event.returnValue = app.getAppPath()
+})
+
+ipcMain.on('isMac', (event) => {
+  event.returnValue = isMacOS
 })
 
 ipcMain.on('minimize', (event, arg) => {
@@ -150,7 +161,6 @@ ipcMain.on('close', (event, arg) => {
  *
  *  in Win and Linux we can use win.minimize() or win.maximize() to toggle visibility.
  */
-const isMacOS = process.platform === 'darwin'
 
 const WindowVisibility = {
   isVisible: true,

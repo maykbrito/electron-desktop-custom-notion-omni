@@ -4,8 +4,7 @@ const { injectCSS, loadSVG } = require("../Util.js")
 
 const appPath = ipcRenderer.sendSync('request-app-path')
 
-const isMac = process.platform === "darwin"
-// const isMac = true //Testando fora do mac
+const isMac = process.platform === "darwin" || ipcRenderer.sendSync('isMac')
 
 function createWindowControls() {
   injectCSS(
@@ -16,8 +15,7 @@ function createWindowControls() {
   const wrapper = document.createElement('div')
   wrapper.id = 'window-controls-wrapper'
 
-  wrapper.dataset.platform = process.platform
-  // wrapper.dataset.platform = "darwin" //Testando fora do mac
+  wrapper.dataset.platform = isMac ? "darwin" : ""
 
   wrapper.innerHTML = isMac ?
     `
