@@ -31,12 +31,12 @@
     background-color: #EF6A5F;
 }
 
-#window-controls-wrapper[data-platform = "darwin"] > #expand{
-    background-color: #F7BE4F;
+#window-controls-wrapper[data-platform = "darwin"] > #fullscreen{
+    background-color: #61C957;
 }
 
 #window-controls-wrapper[data-platform = "darwin"] > #minimize{
-    background-color: #61C957;
+    background-color: #F7BE4F;
 }
 
 #window-controls-wrapper.active{
