@@ -68,10 +68,24 @@ function checkerURL(e, url) {
   }
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
-app.whenReady().then(setTimeout(createWindow, 200)).then(createShortcuts)
+const isUnicInstance = app.requestSingleInstanceLock() //Verifica se o app já foi iniciado
+
+if (!isUnicInstance) {
+    app.quit() // Caso o app já tiver sido aberto ele é fechado
+} else {
+    // This method will be called when Electron has finished
+    // initialization and is ready to create browser windows.
+    // Some APIs can only be used after this event occurs.
+app.whenReady().then(setTimeout(createWindow, 200)).then(createShortcuts);
+}
+
+app.on('second-instance', () => {
+    const win = BrowserWindow.getAllWindows()[0]
+    if (win.isMinimized()){
+      win.restore()
+    } 
+    win.focus()
+})
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
