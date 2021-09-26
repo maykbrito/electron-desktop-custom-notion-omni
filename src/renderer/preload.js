@@ -80,5 +80,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
   /** slides feat */
   injectCSS(path.resolve(appPath, 'src', 'renderer', 'styles', 'slides.css'))
+  injectCSS(path.resolve(appPath, 'src', 'renderer', 'styles', 'bg-cover.css'))
   require('./slides/index.js')
 })
