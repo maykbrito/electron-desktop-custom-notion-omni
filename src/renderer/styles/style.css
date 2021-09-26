@@ -199,7 +199,8 @@ body.dark [style*='color: rgb(226, 85, 161);'] {
   color: var(--pink) !important;
 }
 
-body.dark [style*='color: rgb(77, 171, 154);'] {
+body.dark [style*='color: rgb(77, 171, 154);'],
+body.dark [style*='rgb(77,171,154)'] {
   color: var(--green) !important;
 }
 
