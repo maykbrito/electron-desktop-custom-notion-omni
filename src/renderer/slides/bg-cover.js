@@ -1,7 +1,9 @@
 module.exports.backgroundCover = function () {
-  let bgImage = document.querySelector("img[src*='cover']")
+  let bgImage = document.querySelector(
+    '#notion-app div.notion-scroller.vertical.horizontal img'
+  )
 
-  if (!bgImage) return
+  if (bgImage === 'undefined') return
 
   let imgElement = document.createElement('img')
   imgElement.src = bgImage.src

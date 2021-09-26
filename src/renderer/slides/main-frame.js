@@ -20,6 +20,8 @@ module.exports.createMainFrame = function () {
   mainFrame.style.zIndex = '1000'
   mainFrame.style.overflow = 'overlay'
 
-  mainFrame.append(backgroundCover())
+  let bgCover = backgroundCover()
+  bgCover && mainFrame.append(bgCover)
+
   return mainFrame
 }
