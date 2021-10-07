@@ -37,7 +37,25 @@ You can use this app as slide presentation.
 
    - Each divider will be consider as new slide block
 
-2. Toggle presentation with `SHIFT+ESC
+2. Toggle presentation with `SHIFT+ESC`
+
+Something like this: Create new Notion page and add code bellow then hit `SHIFT+ESC` to see the magic
+
+```md
+---
+# Slide one
+
+Some content
+
+---
+# Slide two
+
+Second slide
+
+## With h2 header
+
+Try it!
+```
 
 ---
 
