@@ -7,10 +7,11 @@
     "start": "electron .",
     "build": "npx electron-packager . --icon assets/icon.icns --out=packages",
     "build-win64": "npx electron-packager . Notion --overwrite --out=packages --platform=win32 --arch=x64 app-version=1.0 --icon=assets/icon.ico"
-
   },
   "devDependencies": {
-    "electron": "^9.4.0"
+    "electron": "^9.4.0",
+    "webpack": "^5.61.0",
+    "webpack-cli": "^4.9.1"
   },
   "keywords": [],
   "author": "",
