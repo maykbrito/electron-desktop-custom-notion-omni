@@ -187,26 +187,26 @@ body.dark .notion-code-block .token.attr-value {
 }
 
 /* colors */
-body.dark [style*='rgb(226, 85, 161)'] {
+body.dark [style*='223, 132, 209'] {
   color: var(--pink) !important;
 }
 
-body.dark [style*='rgb(77, 171, 154)'] {
+body.dark [style*='113, 178, 131'] {
   color: var(--green) !important;
 }
 
-body.dark [style*='rgb(255, 163, 68)'] {
+body.dark [style*='217, 133, 56'] {
   color: var(--orange) !important;
 }
 
-body.dark [style*='rgb(255, 220, 73)'] {
+body.dark [style*='201, 145, 38'] {
   color: var(--yellow) !important;
 }
 
-body.dark [style*='rgb(82, 156, 202)'] {
+body.dark [style*='102, 170, 218'] {
   color: var(--blue) !important;
 }
 
-body.dark [style*='rgb(154, 109, 215)'] {
+body.dark [style*='176, 152, 217'] {
   color: var(--purple) !important;
 }

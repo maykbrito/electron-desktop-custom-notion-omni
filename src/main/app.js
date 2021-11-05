@@ -1,18 +1,22 @@
-const {
+import {
   app,
   BrowserWindow,
   screen,
   globalShortcut,
   shell,
-  ipcMain
-} = require('electron')
-const path = require('path')
-const windowStateKeeper = require('electron-window-state')
+  ipcMain,
+  nativeImage
+} from 'electron'
+import windowStateKeeper from 'electron-window-state'
+import path from 'path'
+
+const assetsPath =
+  process.env.NODE_ENV === 'production'
+    ? process.resourcesPath
+    : app.getAppPath()
 
 let win = null
 app.allowRendererProcessReuse = true
-
-const iconExtension = process.platform === 'win32' ? 'ico' : 'png'
 
 function createWindow() {
   const mainScreen = screen.getPrimaryDisplay()
@@ -28,15 +32,15 @@ function createWindow() {
     y: mainWindowState.y,
     width: mainWindowState.width,
     height: mainWindowState.height,
+    icon: nativeImage.createFromPath(
+      path.join(assetsPath, 'assets', 'icon.png')
+    ),
     frame: false,
-    icon:
-      process.platform === 'darwin'
-        ? undefined
-        : path.resolve(app.getAppPath(), 'assets', `icon.${iconExtension}`),
     titleBarStyle: 'customButtonsOnHover',
     webPreferences: {
       nodeIntegration: false,
-      preload: path.join(__dirname, '..', 'renderer', 'preload.js') // use a preload script
+      contextIsolation: true,
+      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY
     }
   })
 
@@ -71,20 +75,20 @@ function checkerURL(e, url) {
 const isUnicInstance = app.requestSingleInstanceLock() //Verifica se o app já foi iniciado
 
 if (!isUnicInstance) {
-    app.quit() // Caso o app já tiver sido aberto ele é fechado
+  app.quit() // Caso o app já tiver sido aberto ele é fechado
 } else {
-    // This method will be called when Electron has finished
-    // initialization and is ready to create browser windows.
-    // Some APIs can only be used after this event occurs.
-app.whenReady().then(setTimeout(createWindow, 200)).then(createShortcuts);
+  // This method will be called when Electron has finished
+  // initialization and is ready to create browser windows.
+  // Some APIs can only be used after this event occurs.
+  app.whenReady().then(setTimeout(createWindow, 200)).then(createShortcuts)
 }
 
 app.on('second-instance', () => {
-    const win = BrowserWindow.getAllWindows()[0]
-    if (win.isMinimized()){
-      win.restore()
-    } 
-    win.focus()
+  const win = BrowserWindow.getAllWindows()[0]
+  if (win.isMinimized()) {
+    win.restore()
+  }
+  win.focus()
 })
 
 // Quit when all windows are closed.
@@ -107,7 +111,7 @@ function recreateWindow() {
 }
 
 ipcMain.on('request-app-path', (event, arg) => {
-  event.returnValue = app.getAppPath()
+  event.returnValue = assetsPath
 })
 
 ipcMain.on('minimize', (event, arg) => {

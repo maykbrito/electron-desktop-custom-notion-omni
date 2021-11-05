@@ -1,6 +1,11 @@
 const { getSlides } = require('./get-slides.js')
 const { render, $slide, getMainFrame } = require('./render.js')
 
+const injectCSS = require('../../utils/inject-css')
+
+injectCSS('src', 'renderer', 'modules', 'slides', 'slides.css')
+injectCSS('src', 'renderer', 'modules', 'slides', 'bg-cover.css')
+
 let data
 let slideIndex = 0
 let isRunning = false
