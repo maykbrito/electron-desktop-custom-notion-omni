@@ -83,6 +83,11 @@ if (!isUnicInstance) {
   app.whenReady().then(setTimeout(createWindow, 200)).then(createShortcuts)
 }
 
+// Faz com que o programa não inicie várias vezes durante a instalação no windows
+if (require('electron-squirrel-startup')) {
+  app.quit()
+}
+
 app.on('second-instance', () => {
   const win = BrowserWindow.getAllWindows()[0]
   if (win.isMinimized()) {
