@@ -19,19 +19,7 @@ let win = null
 app.allowRendererProcessReuse = true
 
 function createWindow() {
-  const mainScreen = screen.getPrimaryDisplay()
-  const dimensions = mainScreen.size
-
-  const mainWindowState = windowStateKeeper({
-    defaultWidth: dimensions.width,
-    defaultHeight: dimensions.height
-  })
-
   win = new BrowserWindow({
-    x: mainWindowState.x,
-    y: mainWindowState.y,
-    width: mainWindowState.width,
-    height: mainWindowState.height,
     icon: nativeImage.createFromPath(
       path.join(assetsPath, 'assets', 'icon.png')
     ),
@@ -44,12 +32,29 @@ function createWindow() {
     }
   })
 
-  mainWindowState.manage(win)
+  adjustWindow(win)
 
   win.loadURL('https://notion.so')
 
   win.webContents.on('new-window', checkerURL) // add event listener for URL check
 }
+
+function adjustWindow(win) {
+  const mainScreen = screen.getPrimaryDisplay()
+  const dimensions = mainScreen.size
+
+  const mainWindowState = windowStateKeeper({
+    defaultWidth: dimensions.width,
+    defaultHeight: dimensions.height
+  })
+
+  const { width, height, x, y } = mainWindowState
+
+  win.setSize(width, height)
+  win.setPosition(x, y)
+  mainWindowState.manage(win)
+}
+
 function createShortcuts() {
   const reopen = 'Alt+Shift+r'
 
