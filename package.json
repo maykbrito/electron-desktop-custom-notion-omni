@@ -67,7 +67,10 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "motion-omni"
+            "name": "notion-omni",
+            "setupExe": "${name}-${version}-setup.exe",
+            "setupIcon": "./assets/icon.ico",
+            "iconUrl": "https://raw.githubusercontent.com/maykbrito/electron-desktop-custom-notion-omni/feat/slides/assets/icon.ico"
           }
         },
         {
