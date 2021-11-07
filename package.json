@@ -21,9 +21,13 @@
     "webpack": "^5.61.0",
     "webpack-cli": "^4.9.1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "Notion",
+    "Styling",
+    "Custom"
+  ],
+  "author": "Mayk Brito <maykbrito@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
     "electron-window-state": "^5.0.3"
