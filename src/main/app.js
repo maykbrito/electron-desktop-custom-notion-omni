@@ -40,7 +40,9 @@ function adjustWindow(win) {
     defaultHeight: dimensions.height
   })
 
-  const { width, height, x, y } = mainWindowState
+  let { width, height, x, y } = mainWindowState
+  x = x || 0
+  y = y || 0
 
   win.setSize(width, height)
   win.setPosition(x, y)
