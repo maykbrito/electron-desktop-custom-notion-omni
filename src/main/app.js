@@ -1,24 +1,16 @@
-import {
-  app,
-  BrowserWindow,
-  screen,
-  globalShortcut,
-  shell,
-  ipcMain,
-  nativeImage
-} from 'electron'
+import { app, BrowserWindow, screen, nativeImage } from 'electron'
 import windowStateKeeper from 'electron-window-state'
 import path from 'path'
 
-const assetsPath =
-  process.env.NODE_ENV === 'production'
-    ? process.resourcesPath
-    : app.getAppPath()
+import { assetsPath } from './utils/assets-path'
+import { checkerURL } from './utils/check-url'
+
+import './modules/window-manager'
 
 let win = null
 app.allowRendererProcessReuse = true
 
-function createWindow() {
+async function createWindow() {
   win = new BrowserWindow({
     icon: nativeImage.createFromPath(
       path.join(assetsPath, 'assets', 'icon.png')
@@ -55,28 +47,6 @@ function adjustWindow(win) {
   mainWindowState.manage(win)
 }
 
-function createShortcuts() {
-  const reopen = 'Alt+Shift+r'
-
-  globalShortcut.register(reopen, WindowVisibility.toggle)
-}
-
-/**
- * This function is used electron's new-window event
- * It allows non-electron links to be opened with the computer's default browser
- * Keep opening pop-ups for google login for example
- * @param {NewWindowEvent} e
- * @param {String} url
- */
-function checkerURL(e, url) {
-  const isNotUrlOfTheNotion = !url.match('/www.notion.so/')
-
-  if (isNotUrlOfTheNotion) {
-    e.preventDefault()
-    shell.openExternal(url)
-  }
-}
-
 const isUnicInstance = app.requestSingleInstanceLock() //Verifica se o app já foi iniciado
 
 if (!isUnicInstance) {
@@ -85,7 +55,10 @@ if (!isUnicInstance) {
   // This method will be called when Electron has finished
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
-  app.whenReady().then(setTimeout(createWindow, 200)).then(createShortcuts)
+  app
+    .whenReady()
+    .then(createWindow)
+    .catch(e => console.error(e))
 }
 
 // Faz com que o programa não inicie várias vezes durante a instalação no windows
@@ -117,49 +90,5 @@ function recreateWindow() {
   // dock icon is clicked and there are no other windows open.
   if (BrowserWindow.getAllWindows().length === 0) {
     setTimeout(createWindow, 200)
-  }
-}
-
-ipcMain.on('request-app-path', (event, arg) => {
-  event.returnValue = assetsPath
-})
-
-ipcMain.on('minimize', (event, arg) => {
-  const win = BrowserWindow.getFocusedWindow()
-  win.minimize()
-})
-
-ipcMain.on('expand', (event, arg) => {
-  const win = BrowserWindow.getFocusedWindow()
-  if (win.isMaximized()) {
-    win.restore()
-  } else {
-    win.maximize()
-  }
-})
-
-ipcMain.on('close', (event, arg) => {
-  const win = BrowserWindow.getFocusedWindow()
-  win.close()
-})
-
-/**
- *
- *  Toggle Window Visibility
- *  in macOS we can use win.show() or win.hide() to toggle visibility.
- *
- *  in Win and Linux we can use win.minimize() or win.maximize() to toggle visibility.
- */
-const isMacOS = process.platform === 'darwin'
-
-const WindowVisibility = {
-  isVisible: true,
-
-  toggle() {
-    const show = isMacOS ? () => recreateWindow() : () => win.maximize()
-    const hide = isMacOS ? () => win.close() : () => win.minimize()
-
-    this.isVisible ? show() : hide()
-    this.isVisible = !this.isVisible
   }
 }
