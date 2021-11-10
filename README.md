@@ -1,12 +1,12 @@
 # Notion Omni
 
-Inject some CSS to custom Notion colors ;)
+Inject some JS/CSS to customize Notion ;)
 
 ![Preview](.github/preview.png)
 
 ---
 
-## 4 Steps to Use it.
+## 4 Steps to use it.
 
 1. Install
 
@@ -29,17 +29,19 @@ yarn package
 
 ## 📽 Slide Presentation
 
-You can use this app as slide presentation.
+You can use this app as a slide presentation.
 
 ### 🤔 How?
 
 1. Prepare your presentation
 
-   - Each divider will be consider as new slide block
+   - Each divider will be a new slide block
 
 2. Toggle presentation with `SHIFT+ESC`
 
-Try this way: Create new Notion page and add code bellow then hit `SHIFT+ESC` to see the magic
+Try this. 
+
+Create a new Notion page and add code bellow, then hit `SHIFT+ESC` to see the magic.
 
 ```md
 ---
