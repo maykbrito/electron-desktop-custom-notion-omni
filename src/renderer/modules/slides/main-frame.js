@@ -1,3 +1,5 @@
+const { backgroundCover } = require('./bg-cover')
+
 module.exports.createMainFrame = function () {
   let mainFrame = document.createElement('div')
   mainFrame.classList.add('notion-frame')
@@ -17,5 +19,9 @@ module.exports.createMainFrame = function () {
   mainFrame.style.right = '0'
   mainFrame.style.zIndex = '1000'
   mainFrame.style.overflow = 'overlay'
+
+  let bgCover = backgroundCover()
+  bgCover && mainFrame.append(bgCover)
+
   return mainFrame
 }

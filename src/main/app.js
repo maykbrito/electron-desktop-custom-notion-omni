@@ -1,20 +1,37 @@
-const {
-  app,
-  BrowserWindow,
-  screen,
-  globalShortcut,
-  shell,
-  ipcMain
-} = require('electron')
-const path = require('path')
-const windowStateKeeper = require('electron-window-state')
+import { app, BrowserWindow, screen, nativeImage } from 'electron'
+import windowStateKeeper from 'electron-window-state'
+import path from 'path'
+
+import { assetsPath } from './utils/assets-path'
+import { checkerURL } from './utils/check-url'
+
+import './modules/window-manager'
 
 let win = null
 app.allowRendererProcessReuse = true
 
-const iconExtension = process.platform === 'win32' ? 'ico' : 'png'
+async function createWindow() {
+  win = new BrowserWindow({
+    icon: nativeImage.createFromPath(
+      path.join(assetsPath, 'assets', 'icon.png')
+    ),
+    frame: false,
+    titleBarStyle: 'customButtonsOnHover',
+    webPreferences: {
+      nodeIntegration: false,
+      contextIsolation: true,
+      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY
+    }
+  })
 
-function createWindow() {
+  adjustWindow(win)
+
+  win.loadURL('https://notion.so')
+
+  win.webContents.on('new-window', checkerURL) // add event listener for URL check
+}
+
+function adjustWindow(win) {
   const mainScreen = screen.getPrimaryDisplay()
   const dimensions = mainScreen.size
 
@@ -23,68 +40,40 @@ function createWindow() {
     defaultHeight: dimensions.height
   })
 
-  win = new BrowserWindow({
-    x: mainWindowState.x,
-    y: mainWindowState.y,
-    width: mainWindowState.width,
-    height: mainWindowState.height,
-    frame: false,
-    icon:
-      process.platform === 'darwin'
-        ? undefined
-        : path.resolve(app.getAppPath(), 'assets', `icon.${iconExtension}`),
-    titleBarStyle: 'customButtonsOnHover',
-    webPreferences: {
-      nodeIntegration: false,
-      preload: path.join(__dirname, '..', 'renderer', 'preload.js') // use a preload script
-    }
-  })
+  let { width, height, x, y } = mainWindowState
+  x = x || 0
+  y = y || 0
 
+  win.setSize(width, height)
+  win.setPosition(x, y)
   mainWindowState.manage(win)
-
-  win.loadURL('https://notion.so')
-
-  win.webContents.on('new-window', checkerURL) // add event listener for URL check
-}
-function createShortcuts() {
-  const reopen = 'Alt+Shift+r'
-
-  globalShortcut.register(reopen, WindowVisibility.toggle)
-}
-
-/**
- * This function is used electron's new-window event
- * It allows non-electron links to be opened with the computer's default browser
- * Keep opening pop-ups for google login for example
- * @param {NewWindowEvent} e
- * @param {String} url
- */
-function checkerURL(e, url) {
-  const isNotUrlOfTheNotion = !url.match('/www.notion.so/')
-
-  if (isNotUrlOfTheNotion) {
-    e.preventDefault()
-    shell.openExternal(url)
-  }
 }
 
 const isUnicInstance = app.requestSingleInstanceLock() //Verifica se o app já foi iniciado
 
 if (!isUnicInstance) {
-    app.quit() // Caso o app já tiver sido aberto ele é fechado
+  app.quit() // Caso o app já tiver sido aberto ele é fechado
 } else {
-    // This method will be called when Electron has finished
-    // initialization and is ready to create browser windows.
-    // Some APIs can only be used after this event occurs.
-app.whenReady().then(setTimeout(createWindow, 200)).then(createShortcuts);
+  // This method will be called when Electron has finished
+  // initialization and is ready to create browser windows.
+  // Some APIs can only be used after this event occurs.
+  app
+    .whenReady()
+    .then(createWindow)
+    .catch(e => console.error(e))
+}
+
+// Faz com que o programa não inicie várias vezes durante a instalação no windows
+if (require('electron-squirrel-startup')) {
+  app.quit()
 }
 
 app.on('second-instance', () => {
-    const win = BrowserWindow.getAllWindows()[0]
-    if (win.isMinimized()){
-      win.restore()
-    } 
-    win.focus()
+  const win = BrowserWindow.getAllWindows()[0]
+  if (win.isMinimized()) {
+    win.restore()
+  }
+  win.focus()
 })
 
 // Quit when all windows are closed.
@@ -103,49 +92,5 @@ function recreateWindow() {
   // dock icon is clicked and there are no other windows open.
   if (BrowserWindow.getAllWindows().length === 0) {
     setTimeout(createWindow, 200)
-  }
-}
-
-ipcMain.on('request-app-path', (event, arg) => {
-  event.returnValue = app.getAppPath()
-})
-
-ipcMain.on('minimize', (event, arg) => {
-  const win = BrowserWindow.getFocusedWindow()
-  win.minimize()
-})
-
-ipcMain.on('expand', (event, arg) => {
-  const win = BrowserWindow.getFocusedWindow()
-  if (win.isMaximized()) {
-    win.restore()
-  } else {
-    win.maximize()
-  }
-})
-
-ipcMain.on('close', (event, arg) => {
-  const win = BrowserWindow.getFocusedWindow()
-  win.close()
-})
-
-/**
- *
- *  Toggle Window Visibility
- *  in macOS we can use win.show() or win.hide() to toggle visibility.
- *
- *  in Win and Linux we can use win.minimize() or win.maximize() to toggle visibility.
- */
-const isMacOS = process.platform === 'darwin'
-
-const WindowVisibility = {
-  isVisible: true,
-
-  toggle() {
-    const show = isMacOS ? () => recreateWindow() : () => win.maximize()
-    const hide = isMacOS ? () => win.close() : () => win.minimize()
-
-    this.isVisible ? show() : hide()
-    this.isVisible = !this.isVisible
   }
 }

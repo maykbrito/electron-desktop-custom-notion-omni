@@ -1,4 +1,4 @@
-# Omni Notion
+# Notion Omni
 
 Inject some CSS to custom Notion colors ;)
 
@@ -11,17 +11,17 @@ Inject some CSS to custom Notion colors ;)
 1. Install
 
 ```sh
-npm i
+yarn
 ```
 
 2. Build
 
 ```sh
-npm run build
+yarn package
 ```
 
 3. Run your new app.
-   _It will be at dir ./packages_
+   _It will be at dir ./out_
 
 4. Put your Notion in Dark Mode ;)
 
@@ -39,15 +39,15 @@ You can use this app as slide presentation.
 
 2. Toggle presentation with `SHIFT+ESC`
 
-Something like this: Create new Notion page and add code bellow then hit `SHIFT+ESC` to see the magic
+Try this way: Create new Notion page and add code bellow then hit `SHIFT+ESC` to see the magic
 
 ```md
 ---
 # Slide one
 
 Some content
-
 ---
+
 # Slide two
 
 Second slide
