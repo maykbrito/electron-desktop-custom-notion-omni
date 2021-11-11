@@ -47,7 +47,7 @@ Because we love a clean layout, we can toggle (show/hide) view of
 
 by pressing `ctrl+esc`
 
-![Content only preview](.github/content-only.gif)
+![Imgur](https://i.imgur.com/NkJz7cn.gif)
 
 ---
 
@@ -55,7 +55,7 @@ by pressing `ctrl+esc`
 
 You can use this app as a slide presentation.
 
-![Slides preview](.github/slides.gif)
+![Slides preview](https://i.imgur.com/9QL2WTy.gif)
 
 ### 🤔 How?
 
