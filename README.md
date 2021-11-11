@@ -47,11 +47,15 @@ Because we love a clean layout, we can toggle (show/hide) view of
 
 by pressing `ctrl+esc`
 
+![Content only preview](.github/content-only.gif)
+
 ---
 
 ## Slide Presentation
 
 You can use this app as a slide presentation.
+
+![Slides preview](.github/slides.gif)
 
 ### 🤔 How?
 
