@@ -9,4 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   /** slides feat */
   require('./modules/slides/index.js')
+
+  /** content-only feat */
+  require('./modules/content-only')
 })

@@ -27,6 +27,20 @@ yarn package
 
 ---
 
+# Features
+
+## Content Only
+
+Because we love a clean layout, we can toggle (show/hide) view of
+
+- header bar
+- page title & attributes block
+- help button
+
+by pressing `ctrl+esc`
+
+---
+
 ## 📽 Slide Presentation
 
 You can use this app as a slide presentation.
@@ -39,7 +53,7 @@ You can use this app as a slide presentation.
 
 2. Toggle presentation with `SHIFT+ESC`
 
-Try this. 
+Try this.
 
 Create a new Notion page and add code bellow, then hit `SHIFT+ESC` to see the magic.
 
