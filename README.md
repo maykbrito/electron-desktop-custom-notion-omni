@@ -2,11 +2,21 @@
 
 Inject some JS/CSS to customize Notion ;)
 
+---
+
+<p align="center">
+<a href="#how-to-build">How to build</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#features">Features</a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#contact">Contact</a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+</p>
+
 ![Preview](.github/preview.png)
 
 ---
 
-## 4 Steps to use it.
+## How to build
 
 1. Install
 
@@ -25,8 +35,6 @@ yarn package
 
 4. Put your Notion in Dark Mode ;)
 
----
-
 # Features
 
 ## Content Only
@@ -41,7 +49,7 @@ by pressing `ctrl+esc`
 
 ---
 
-## 📽 Slide Presentation
+## Slide Presentation
 
 You can use this app as a slide presentation.
 
@@ -73,11 +81,10 @@ Second slide
 Try it!
 ```
 
----
+# Contact
 
-## 🔗 Get more content!
+Mayk Brito
 
-- [Youtube](https://www.youtube.com/maykbrito)
 - [maykbrito.dev](https://maykbrito.dev)
 
 ---
