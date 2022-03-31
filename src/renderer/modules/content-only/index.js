@@ -14,8 +14,11 @@ window.addEventListener('keydown', ev => {
   }
 })
 
-const elementDisplay = (element, display) =>
-  (document.querySelector(element).style.display = display)
+const elementDisplay = (element, display) => {
+  if (!document.querySelector(element)) return
+
+  document.querySelector(element).style.display = display
+}
 
 const hide = () => {
   elementsToHide.forEach(element => elementDisplay(element, 'none'))
