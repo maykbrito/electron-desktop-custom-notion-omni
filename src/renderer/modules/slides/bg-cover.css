@@ -12,3 +12,8 @@
   opacity: 1;
   filter: brightness(0.5);
 }
+
+/* image appear in heading 1 only */
+.slides.dark:not(:has([placeholder="Heading 1"])) .slides__cover-image {
+  display: none;
+}
