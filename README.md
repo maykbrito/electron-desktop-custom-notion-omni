@@ -76,10 +76,11 @@ Create a new Notion page and add code bellow, then hit `SHIFT+ESC` to see the ma
 Some content
 ---
 
-# Slide two
+## Slide two
 
 Second slide
 
+---
 ## With h2 header
 
 Try it!
