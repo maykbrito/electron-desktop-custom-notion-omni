@@ -1,8 +1,4 @@
 /* h1 */
-.slides .capa > div {
-  max-width: 1000px !important;
-}
-
 .slides:has([placeholder="Heading 1"]) {
   text-align: center !important;
 }
@@ -49,10 +45,6 @@
 }
 
 /* list */
-.md ul {
-  list-style: none;
-}
-
 .slides .notion-bulleted_list-block {
   margin-top: 1.5em !important;
 }
@@ -78,7 +70,5 @@
   background-color: var(--primary);
   border: 2px solid black;
   margin-right: 0.625em;
-  /* margin-left: -1.125em; */
-  /* transform: translateY(-0.1em); */
   display: block !important;
 }

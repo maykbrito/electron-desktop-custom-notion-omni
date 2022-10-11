@@ -1,12 +1,5 @@
-/* slides */
 .slides.dark.notion-frame {
-  /* background-color: var(--dark-2) !important; */
-
   width: 100%;
-  height: 100vh;
-  aspect-ratio: 16/9;
-  padding-block: 3.125em calc(100vh / 10);
-  padding-inline: 1.875em;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -18,11 +11,13 @@
   background-color: white !important;
 }
 
-.slides > div {
-  /* padding: 2rem 4rem 0; */
-  width: 90%;
-  max-width: 800px;
-  margin: 0 auto;
+.slides #slide-inner {
+  width: 90% !important;
+  max-width: 800px !important;
+  margin: 0 auto !important;
+  padding-bottom: 10vh !important;
+  padding-left: calc(0px + env(safe-area-inset-left)) !important;
+  padding-right: calc(0px + env(safe-area-inset-right)) !important;
 }
 
 .slides > div > div {
