@@ -5,6 +5,7 @@ const elementsToHide = [
   '.notion-frame > div.notion-scroller.vertical.horizontal > div:nth-child(2) > div'
 ]
 let notionFrameInitialHeight
+let elementsInitialDisplay = {}
 
 window.addEventListener('keydown', ev => {
   const shortcutKeys = ev.key === 'Escape' && ev.ctrlKey
@@ -17,18 +18,22 @@ window.addEventListener('keydown', ev => {
 const elementDisplay = (element, display) => {
   if (!document.querySelector(element)) return
 
+  if (display === 'initial') {
+    document.querySelector(element).style.display = elementsInitialDisplay[element]
+    return
+  }
+  
+  elementsInitialDisplay[element] = document.querySelector(element).style.display
   document.querySelector(element).style.display = display
 }
 
 const hide = () => {
   elementsToHide.forEach(element => elementDisplay(element, 'none'))
-
-  notionFrameInitialHeight =
-    document.querySelector('.notion-frame').style.height
+  
+  notionFrameInitialHeight = document.querySelector('.notion-frame').style.height
   document.querySelector('.notion-frame').style.height = '100vh'
 }
 const show = () => {
   elementsToHide.forEach(element => elementDisplay(element, 'initial'))
-  document.querySelector('.notion-frame').style.height =
-    notionFrameInitialHeight
+  document.querySelector('.notion-frame').style.height = notionFrameInitialHeight
 }
