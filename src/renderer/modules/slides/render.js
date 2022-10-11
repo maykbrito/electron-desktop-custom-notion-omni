@@ -1,5 +1,5 @@
-const { createMainFrame } = require('./main-frame.js')
-const { createSlideElement } = require('./slide-element.js')
+const { createMainFrame } = require("./main-frame.js")
+const { createSlideElement } = require("./slide-element.js")
 
 const $slide = createSlideElement()
 
@@ -13,11 +13,11 @@ module.exports.getMainFrame = () => {
 }
 
 module.exports.render = ($slide, currentSlide) => {
-  $slide.innerHTML = ''
+  $slide.innerHTML = ""
   if (!currentSlide) return
-  currentSlide.blocks.forEach(block => {
+  currentSlide.blocks.forEach((block) => {
     const buildBlock = block.cloneNode(true)
-    buildBlock.classList.add('appear')
+    buildBlock.classList.add("appear")
     $slide.appendChild(buildBlock)
   })
 }

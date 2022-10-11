@@ -1,18 +1,20 @@
-const { getSlides } = require('./get-slides.js')
-const { render, $slide, getMainFrame } = require('./render.js')
+const { getSlides } = require("./get-slides.js")
+const { render, $slide, getMainFrame } = require("./render.js")
 
-const injectCSS = require('../../utils/inject-css')
+const injectCSS = require("../../utils/inject-css")
 
-injectCSS('src', 'renderer', 'modules', 'slides', 'slides.css')
-injectCSS('src', 'renderer', 'modules', 'slides', 'bg-cover.css')
+injectCSS("src", "renderer", "modules", "slides", "slides.css")
+
+injectCSS("src", "renderer", "modules", "slides", "texting.css")
+injectCSS("src", "renderer", "modules", "slides", "bg-cover.css")
 
 let data
 let slideIndex = 0
 let isRunning = false
 let mainFrame
 
-window.addEventListener('keydown', function (ev) {
-  if (ev.key === 'Escape' && ev.shiftKey) {
+window.addEventListener("keydown", function (ev) {
+  if (ev.key === "Escape" && ev.shiftKey) {
     isRunning ? hide() : show()
     isRunning = !isRunning
   }
@@ -24,23 +26,23 @@ function show() {
 }
 
 function hide() {
-  mainFrame.style.display = 'none'
-  window.removeEventListener('keydown', control)
+  mainFrame.style.display = "none"
+  window.removeEventListener("keydown", control)
 }
 
 function control(ev) {
   switch (ev.key) {
-    case 'ArrowLeft':
-      move('backward')
+    case "ArrowLeft":
+      move("backward")
       break
-    case 'ArrowRight':
-      move('forward')
+    case "ArrowRight":
+      move("forward")
       break
   }
 }
 
 function move(dir) {
-  var dx = dir === 'backward' ? -1 : 1
+  var dx = dir === "backward" ? -1 : 1
 
   const isLeft = dx === -1
 
@@ -65,7 +67,7 @@ function start() {
   data = getSlides()
   mainFrame = getMainFrame()
 
-  window.addEventListener('keydown', control)
+  window.addEventListener("keydown", control)
 
   render($slide, data[0])
 }

@@ -1,0 +1,84 @@
+/* h1 */
+.slides .capa > div {
+  max-width: 1000px !important;
+}
+
+.slides:has([placeholder="Heading 1"]) {
+  text-align: center !important;
+}
+
+.slides [placeholder="Heading 1"] {
+  font-size: 3em !important;
+  line-height: 1.2 !important;
+  line-height: 1 !important;
+}
+
+.slides [placeholder="Heading 1"]::after {
+  display: block !important;
+  content: "";
+  width: 1.25em !important;
+  height: 0.125em !important;
+  background: var(--primary);
+  border-radius: 4em !important;
+  margin: 0.225em auto 0.3875em !important;
+}
+
+/* h2 */
+.slides [placeholder="Heading 2"] {
+  font-size: 1em !important;
+  margin-bottom: 1em !important;
+  line-height: 1.6 !important;
+}
+
+.slides [placeholder="Heading 2"]::after {
+  content: "";
+  display: block;
+  background: var(--primary);
+  height: 0.2em;
+  width: 1.875em;
+  border-radius: 10px;
+  margin-top: 0.3125em;
+  margin-bottom: 1.25em;
+}
+
+/* p */
+.slides .notion-text-block > div > div > div {
+  font-size: 1.125em !important;
+  line-height: 1.6 !important;
+  margin-inline: 0 !important;
+}
+
+/* list */
+.md ul {
+  list-style: none;
+}
+
+.slides .notion-bulleted_list-block {
+  margin-top: 1.5em !important;
+}
+
+.slides .notion-bulleted_list-block [placeholder="List"] {
+  font-size: 1.375em !important;
+  line-height: 1.2 !important;
+  /* margin-bottom: 0.2em !important; */
+}
+
+.slides .notion-bulleted_list-block .notion-text-block {
+  font-size: 1em !important;
+  line-height: 1.4 !important;
+  opacity: 0.7;
+}
+
+.slides .notion-bulleted_list-block > div > div:nth-child(1) div::before {
+  content: "";
+  display: inline-block;
+  width: 0.3375em !important;
+  height: 0.3375em !important;
+  border-radius: 50%;
+  background-color: var(--primary);
+  border: 2px solid black;
+  margin-right: 0.625em;
+  /* margin-left: -1.125em; */
+  /* transform: translateY(-0.1em); */
+  display: block !important;
+}
