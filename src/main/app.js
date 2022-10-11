@@ -1,11 +1,11 @@
-import { app, BrowserWindow, screen, nativeImage } from 'electron'
-import windowStateKeeper from 'electron-window-state'
-import path from 'path'
+import { app, BrowserWindow, screen, nativeImage } from "electron"
+import windowStateKeeper from "electron-window-state"
+import path from "path"
 
-import { assetsPath } from './utils/assets-path'
-import { checkerURL } from './utils/check-url'
+import { assetsPath } from "./utils/assets-path"
+import { checkerURL } from "./utils/check-url"
 
-import './modules/window-manager'
+import "./modules/window-manager"
 
 let win = null
 app.allowRendererProcessReuse = true
@@ -13,22 +13,23 @@ app.allowRendererProcessReuse = true
 async function createWindow() {
   win = new BrowserWindow({
     icon: nativeImage.createFromPath(
-      path.join(assetsPath, 'assets', 'icon.png')
+      path.join(assetsPath, "assets", "icon.png")
     ),
     frame: false,
-    titleBarStyle: 'customButtonsOnHover',
+    titleBarStyle: "customButtonsOnHover",
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
-      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY
-    }
+      sandbox: false,
+      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+    },
   })
 
   adjustWindow(win)
 
-  win.loadURL('https://notion.so')
+  win.loadURL("https://notion.so")
 
-  win.webContents.on('new-window', checkerURL) // add event listener for URL check
+  win.webContents.on("new-window", checkerURL) // add event listener for URL check
 }
 
 function adjustWindow(win) {
@@ -37,7 +38,7 @@ function adjustWindow(win) {
 
   const mainWindowState = windowStateKeeper({
     defaultWidth: dimensions.width,
-    defaultHeight: dimensions.height
+    defaultHeight: dimensions.height,
   })
 
   let { width, height, x, y } = mainWindowState
@@ -60,15 +61,15 @@ if (!isUnicInstance) {
   app
     .whenReady()
     .then(createWindow)
-    .catch(e => console.error(e))
+    .catch((e) => console.error(e))
 }
 
 // Faz com que o programa não inicie várias vezes durante a instalação no windows
-if (require('electron-squirrel-startup')) {
+if (require("electron-squirrel-startup")) {
   app.quit()
 }
 
-app.on('second-instance', () => {
+app.on("second-instance", () => {
   const win = BrowserWindow.getAllWindows()[0]
   if (win.isMinimized()) {
     win.restore()
@@ -77,15 +78,15 @@ app.on('second-instance', () => {
 })
 
 // Quit when all windows are closed.
-app.on('window-all-closed', () => {
+app.on("window-all-closed", () => {
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') {
+  if (process.platform !== "darwin") {
     app.quit()
   }
 })
 
-app.on('activate', recreateWindow)
+app.on("activate", recreateWindow)
 
 function recreateWindow() {
   // On macOS it's common to re-create a window in the app when the

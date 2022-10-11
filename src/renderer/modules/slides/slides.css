@@ -1,14 +1,23 @@
-/* slides */
 .slides.dark.notion-frame {
-  background-color: var(--dark-2) !important;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #05080d !important;
 }
 
 .slides.notion-frame {
   background-color: white !important;
 }
 
-.slides > div {
-  padding: 2rem 4rem 0;
+.slides #slide-inner {
+  width: 90% !important;
+  max-width: 800px !important;
+  margin: 0 auto !important;
+  padding-bottom: 10vh !important;
+  padding-left: calc(0px + env(safe-area-inset-left)) !important;
+  padding-right: calc(0px + env(safe-area-inset-right)) !important;
 }
 
 .slides > div > div {
