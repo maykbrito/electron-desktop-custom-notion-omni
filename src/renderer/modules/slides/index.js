@@ -4,7 +4,6 @@ const { render, $slide, getMainFrame } = require("./render.js")
 const injectCSS = require("../../utils/inject-css")
 
 injectCSS("src", "renderer", "modules", "slides", "slides.css")
-
 injectCSS("src", "renderer", "modules", "slides", "texting.css")
 injectCSS("src", "renderer", "modules", "slides", "bg-cover.css")
 
@@ -22,7 +21,7 @@ window.addEventListener("keydown", function (ev) {
 
 function show() {
   mainFrame && mainFrame.parentNode.removeChild(mainFrame)
-  start()
+  start(slideIndex)
 }
 
 function hide() {
@@ -69,5 +68,15 @@ function start() {
 
   window.addEventListener("keydown", control)
 
-  render($slide, data[0])
+  prepareSlideWrapper()
+  render($slide, data[slideIndex])
+}
+
+function prepareSlideWrapper() {
+  const notionPageContentStyles = document
+    .querySelector("#notion-app main .notion-page-content")
+    .getAttribute("style")
+  $slide.classList.add("notion-page-content")
+  $slide.setAttribute("style", notionPageContentStyles)
+  $slide.setAttribute("id", "slide-inner")
 }

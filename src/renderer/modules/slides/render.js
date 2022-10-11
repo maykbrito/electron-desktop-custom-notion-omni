@@ -15,9 +15,10 @@ module.exports.getMainFrame = () => {
 module.exports.render = ($slide, currentSlide) => {
   $slide.innerHTML = ""
   if (!currentSlide) return
-  currentSlide.blocks.forEach((block) => {
+
+  for (let block of currentSlide.blocks) {
     const buildBlock = block.cloneNode(true)
     buildBlock.classList.add("appear")
     $slide.appendChild(buildBlock)
-  })
+  }
 }
