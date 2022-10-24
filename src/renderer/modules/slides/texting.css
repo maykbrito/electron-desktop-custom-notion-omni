@@ -1,3 +1,8 @@
+.slides {
+  --font-family: "Ubuntu", "PT Sans", "Helvetica", sans-serif;
+  letter-spacing: 0.03em;
+}
+
 /* h1 */
 .slides:has([placeholder="Heading 1"]) {
   text-align: center !important;
@@ -5,8 +10,8 @@
 
 .slides [placeholder="Heading 1"] {
   font-size: 3em !important;
-  line-height: 1.2 !important;
   line-height: 1 !important;
+  font-family: var(--font-family) !important;
 }
 
 .slides [placeholder="Heading 1"]::after {
@@ -22,8 +27,9 @@
 /* h2 */
 .slides [placeholder="Heading 2"] {
   font-size: 1em !important;
-  margin-bottom: 1em !important;
+  margin-bottom: 0em !important;
   line-height: 1.6 !important;
+  font-family: var(--font-family) !important;
 }
 
 .slides [placeholder="Heading 2"]::after {
@@ -34,7 +40,7 @@
   width: 1.875em;
   border-radius: 10px;
   margin-top: 0.3125em;
-  margin-bottom: 1.25em;
+  margin-bottom: 0.875em;
 }
 
 /* p */
@@ -42,17 +48,25 @@
   font-size: 1.125em !important;
   line-height: 1.6 !important;
   margin-inline: 0 !important;
+  font-family: var(--font-family) !important ;
+}
+
+/* sub h1 p */
+.slides .notion-header-block + .notion-text-block > div > div > div {
+  font-family: "IBM Plex Mono", "American Typewriter", monospace !important;
 }
 
 /* list */
-.slides .notion-bulleted_list-block {
+.slides
+  .notion-bulleted_list-block.appear
+  + .notion-bulleted_list-block.appear {
   margin-top: 1.5em !important;
 }
 
-.slides .notion-bulleted_list-block [placeholder="List"] {
+.slides .notion-bulleted_list-block.appear [placeholder="List"] {
   font-size: 1.375em !important;
   line-height: 1.2 !important;
-  /* margin-bottom: 0.2em !important; */
+  font-family: var(--font-family) !important;
 }
 
 .slides .notion-bulleted_list-block .notion-text-block {
@@ -71,4 +85,20 @@
   border: 2px solid black;
   margin-right: 0.625em;
   display: block !important;
+}
+
+/* sub list item */
+.slides .notion-bulleted_list-block .notion-bulleted_list-block {
+  font-size: 0.8em !important;
+  opacity: 0.8;
+}
+
+.slides
+  .notion-bulleted_list-block
+  .notion-bulleted_list-block
+  > div
+  > div:nth-child(1)
+  div::before {
+  background-color: transparent;
+  border: 2px solid var(--primary);
 }
