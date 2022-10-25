@@ -16,8 +16,8 @@
   max-width: 800px !important;
   margin: 0 auto !important;
   padding-bottom: 10vh !important;
-  padding-left: calc(0px + env(safe-area-inset-left)) !important;
-  padding-right: calc(0px + env(safe-area-inset-right)) !important;
+  padding-left: calc(4rem + env(safe-area-inset-left)) !important;
+  padding-right: calc(4rem + env(safe-area-inset-right)) !important;
 }
 
 .slides > div > div {
