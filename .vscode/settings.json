@@ -9,6 +9,7 @@
   "editor.minimap.enabled": false,
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
+  "files.autoSave": "afterDelay",
 
   // explorer
   "explorer.compactFolders": false,
@@ -33,5 +34,15 @@
     }
   },
   "terminal.integrated.defaultProfile.windows": "Git Bash",
-  "window.zoomLevel": 1
+
+  // zen mode
+  "zenMode.hideActivityBar": true,
+  "zenMode.hideTabs": true,
+  "zenMode.silentNotifications": true,
+  "zenMode.fullScreen": false,
+  "zenMode.centerLayout": false,
+  "zenMode.hideLineNumbers": false,
+
+  //
+  "window.zoomLevel": -1
 }
