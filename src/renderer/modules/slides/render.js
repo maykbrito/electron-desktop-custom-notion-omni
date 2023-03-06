@@ -1,5 +1,6 @@
 const { createMainFrame } = require("./main-frame.js")
 const { createSlideElement } = require("./slide-element.js")
+const { createAndAttachCopyButtonToElement } = require("./copy.js")
 
 const $slide = createSlideElement()
 
@@ -21,4 +22,10 @@ module.exports.render = ($slide, currentSlide) => {
     buildBlock.classList.add("appear")
     $slide.appendChild(buildBlock)
   }
+
+  let notionCodeBlock = document.querySelectorAll(".slides .notion-code-block")
+
+  if (!notionCodeBlock) return
+
+  notionCodeBlock.forEach(createAndAttachCopyButtonToElement)
 }

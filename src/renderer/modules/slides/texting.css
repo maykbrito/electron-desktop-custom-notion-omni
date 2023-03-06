@@ -102,3 +102,36 @@
   background-color: transparent;
   border: 2px solid var(--primary);
 }
+
+/* code-block */
+.slides .notion-code-block {
+  position: relative;
+}
+
+.copyButton {
+  border: 0;
+  background-color: rgb(54 53 54 / 47%);
+  color: white;
+  border-radius: 4px;
+  font-size: 10px;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  line-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  padding: 0 10px;
+  cursor: pointer;
+
+  display: none;
+}
+
+.copyButton:hover {
+  background-color: rgb(54 53 54 / 77%);
+}
+
+.slides .notion-code-block:hover .copyButton {
+  display: block;
+}
