@@ -37,12 +37,12 @@
 
   // zen mode
   "zenMode.hideActivityBar": true,
-  "zenMode.hideTabs": true,
   "zenMode.silentNotifications": true,
   "zenMode.fullScreen": false,
   "zenMode.centerLayout": false,
   "zenMode.hideLineNumbers": false,
 
   //
-  "window.zoomLevel": -1
+  "window.zoomLevel": 0,
+  "zenMode.showTabs": "single"
 }
