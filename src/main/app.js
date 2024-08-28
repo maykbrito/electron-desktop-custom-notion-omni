@@ -17,6 +17,7 @@ async function createWindow() {
     ),
     frame: false,
     titleBarStyle: "customButtonsOnHover",
+    draggable: true,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
