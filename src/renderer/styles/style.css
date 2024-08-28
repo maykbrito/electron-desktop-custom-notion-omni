@@ -18,13 +18,14 @@
 
   /* colors */
   --pink: hsl(326, 100%, 74%);
-  --green: hsl(132, 70%, 65%);
+  --green: #29e0a9;
   --purple: hsl(253, 35%, 66%);
   --purple-dark: hsl(257, 26%, 40%);
   --yellow: hsl(55, 70%, 69%);
   --blue: hsl(189, 64%, 68%);
   --white: hsl(240, 9%, 89%);
   --orange: hsl(26, 74%, 65%);
+  --red: #ff5c39;
 }
 
 body.dark #notion-app .notion-sidebar {
@@ -128,6 +129,7 @@ body.dark .notion-frame,
 body.dark .notion-peek-renderer>div>div,
 /* every style that has rgb(47, 52, 55) as bg */
 [style*='rgb(47, 52, 55)'],
+[style*='background: rgb(32, 32, 32)'],
 [style*='background: rgb(25, 25, 25)'] {
   background: var(--dark-1) !important;
 }
@@ -189,27 +191,44 @@ body.dark .notion-code-block .token.attr-value {
 }
 
 /* colors */
-body.dark [style*="223, 132, 209"] {
+body [style*="209, 87, 150"],
+body [style*="193, 76, 138"],
+body [style*="223, 132, 209"] {
   color: var(--pink) !important;
 }
 
-body.dark [style*="113, 178, 131"] {
+body [style*="223, 84, 82"],
+body [style*="212, 76, 71"] {
+  color: var(--red) !important;
+}
+
+body [style*="68, 131, 97"],
+body [style*="82, 158, 114"],
+body [style*="113, 178, 131"] {
   color: var(--green) !important;
 }
 
-body.dark [style*="217, 133, 56"] {
+body [style*="217, 115, 13"],
+body [style*="199, 125, 72"],
+body [style*="217, 133, 56"] {
   color: var(--orange) !important;
 }
 
-body.dark [style*="201, 145, 38"] {
+body [style*="201, 145, 38"],
+body [style*="203, 145, 47"],
+body [style*="202, 152, 73"] {
   color: var(--yellow) !important;
 }
 
-body.dark [style*="102, 170, 218"] {
+body [style*="51, 126, 169"],
+body [style*="94, 135, 201"],
+body [style*="102, 170, 218"] {
   color: var(--blue) !important;
 }
 
-body.dark [style*="176, 152, 217"] {
+body [style*="144, 101, 176"],
+body [style*="157, 104, 211"],
+body [style*="176, 152, 217"] {
   color: var(--purple) !important;
 }
 
@@ -219,4 +238,8 @@ body.dark [style*="176, 152, 217"] {
 
 .notion-topbar > div:first-child * {
   -webkit-app-region: no-drag;
+}
+
+[style*="background: rgb(37, 37, 37)"] {
+  background: #31313f !important;
 }

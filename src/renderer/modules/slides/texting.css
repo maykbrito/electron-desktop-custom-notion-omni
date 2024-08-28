@@ -1,6 +1,12 @@
 .slides {
-  --font-family: "Ubuntu", "PT Sans", "Helvetica", sans-serif;
+  --base-primary-color: var(--green);
+  --font-family: "Plus Jakarta Sans", "Ubuntu", "PT Sans", "Helvetica",
+    sans-serif;
   letter-spacing: 0.03em;
+}
+
+.slides.dark {
+  color: #f5f5fa;
 }
 
 /* h1 */
@@ -19,7 +25,7 @@
   content: "";
   width: 1.25em !important;
   height: 0.125em !important;
-  background: var(--primary);
+  background: var(--base-primary-color);
   border-radius: 4em !important;
   margin: 0.225em auto 0.3875em !important;
 }
@@ -35,7 +41,7 @@
 .slides [placeholder="Heading 2"]::after {
   content: "";
   display: block;
-  background: var(--primary);
+  background: var(--base-primary-color);
   height: 0.2em;
   width: 1.875em;
   border-radius: 10px;
@@ -81,7 +87,7 @@
   width: 0.3375em !important;
   height: 0.3375em !important;
   border-radius: 50%;
-  background-color: var(--primary);
+  background-color: var(--base-primary-color);
   border: 2px solid black;
   margin-right: 0.625em;
   display: block !important;
@@ -100,7 +106,7 @@
   > div:nth-child(1)
   div::before {
   background-color: transparent;
-  border: 2px solid var(--primary);
+  border: 2px solid var(--base-primary-color);
 }
 
 /* code-block */

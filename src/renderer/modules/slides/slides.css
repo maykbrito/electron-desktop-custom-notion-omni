@@ -1,14 +1,22 @@
-.slides.dark.notion-frame {
+.slides {
+  --base-bg-color: #070715;
+  --base-text-color: #f5f5fa;
+}
+
+.slides.notion-frame {
   width: 100%;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #05080d !important;
+}
+
+.slides.dark.notion-frame {
+  background: var(--base-bg-color) !important;
 }
 
 .slides.notion-frame {
-  background-color: white !important;
+  background-color: var(--base-text-color) !important;
 }
 
 .slides #slide-inner {
