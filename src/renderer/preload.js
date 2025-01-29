@@ -13,14 +13,14 @@ window.addEventListener("DOMContentLoaded", () => {
   /** content-only feat */
   require("./modules/content-only")
 
-  // dran and move window
+  // drag and move window
   var windowTopBar = document.createElement("div")
   windowTopBar.id = "maykbrito-eh-o-brabo"
   windowTopBar.style.width = "100%"
-  windowTopBar.style.height = "32px"
-  windowTopBar.style.backgroundColor = "#000"
+  windowTopBar.style.height = "2.75rem"
   windowTopBar.style.position = "absolute"
   windowTopBar.style.top = windowTopBar.style.left = 0
   windowTopBar.style.webkitAppRegion = "drag"
+  windowTopBar.style.pointerEvents = "none"
   document.body.appendChild(windowTopBar)
 })
