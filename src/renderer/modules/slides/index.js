@@ -1,3 +1,4 @@
+require('./configurator/index.js')
 const { getSlides } = require("./get-slides.js")
 const { render, $slide, getMainFrame } = require("./render.js")
 
