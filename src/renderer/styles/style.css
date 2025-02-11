@@ -1,6 +1,7 @@
 :root {
   /* Dark */
   --dark-hue: 253;
+  --dark-0: hsl(var(--dark-hue), 24%, 5%);
   --dark: hsl(var(--dark-hue), 24%, 10%);
   --dark-1: hsl(var(--dark-hue), 24%, 14%);
   --dark-2: hsl(var(--dark-hue), 24%, 18%);
@@ -149,6 +150,9 @@ body.dark div[style*="rgb(63, 68, 71)"] {
 body.dark .notion-code-block {
   background: var(--dark) !important;
 }
+body.dark [style*="rgba(255, 255, 255, 0.03)"] {
+    background: rgba(255, 255, 255, 0) !important;
+}
 
 body.dark .notion-code-block .token.keyword,
 body.dark .notion-code-block .token.operator,
@@ -241,5 +245,5 @@ body [style*="176, 152, 217"] {
 }
 
 [style*="background: rgb(37, 37, 37)"] {
-  background: #31313f !important;
+  background: var(--dark) !important;
 }
