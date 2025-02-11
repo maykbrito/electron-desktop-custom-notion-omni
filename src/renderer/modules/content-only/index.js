@@ -1,8 +1,7 @@
 let showingOnlyContent = false
 const elementsToHide = [
-  '.notion-cursor-listener > div:nth-child(2) > div:nth-child(1)',
-  '.notion-help-button',
-  '.notion-frame > div.notion-scroller.vertical.horizontal > div:nth-child(2) > div'
+  '#notion-app > div > div:nth-child(1) > div > div:nth-child(2) > header',
+  '.notion-ai-button'
 ]
 let notionFrameInitialHeight
 let elementsInitialDisplay = {}
@@ -16,20 +15,22 @@ window.addEventListener('keydown', ev => {
 })
 
 const elementDisplay = (element, display) => {
-  if (!document.querySelector(element)) return
+  const currentElement = document.querySelector(element)
+  console.log({ currentElement })
+  if (!currentElement) return
 
   if (display === 'initial') {
-    document.querySelector(element).style.display = elementsInitialDisplay[element]
+    currentElement.style.display = elementsInitialDisplay[element]
     return
   }
-  
-  elementsInitialDisplay[element] = document.querySelector(element).style.display
-  document.querySelector(element).style.display = display
+
+  elementsInitialDisplay[element] = currentElement.style.display
+  currentElement.style.display = display;
 }
 
 const hide = () => {
   elementsToHide.forEach(element => elementDisplay(element, 'none'))
-  
+
   notionFrameInitialHeight = document.querySelector('.notion-frame').style.height
   document.querySelector('.notion-frame').style.height = '100vh'
 }
