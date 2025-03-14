@@ -2,7 +2,7 @@ const Modal = require("./modal.js")
 
 const ButtonAction = {
   targetElement: () => document.querySelector("#notion-app div.notion-page-controls"),
-  createButton(Modal) {
+  createButton() {
     const content = `
   <svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 24 24" style="width: 14px; height: 14px; display: block; fill: rgba(255, 255, 255, 0.282); flex-shrink: 0; margin-right: 6px;" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
   Add script
@@ -25,7 +25,7 @@ const ButtonAction = {
     const targetElement = this.targetElement();
 
     if (targetElement && !targetElement.querySelector('.add-script-button')) {
-      const button = this.createButton(Modal);
+      const button = this.createButton();
       targetElement.appendChild(button);
     }
   },

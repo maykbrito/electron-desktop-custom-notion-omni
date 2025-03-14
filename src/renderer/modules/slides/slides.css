@@ -32,6 +32,11 @@
   max-width: 100% !important;
 }
 
+/* the copy button is repeated an not needed */
+.slides .copyButton {
+  display: none !important;
+}
+
 /* animate slides */
 .slides.notion-frame .appear {
   opacity: 0;

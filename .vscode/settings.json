@@ -44,5 +44,8 @@
 
   //
   "window.zoomLevel": 0,
-  "zenMode.showTabs": "single"
+  "zenMode.showTabs": "single",
+  "cSpell.words": [
+    "Omni",
+  ]
 }
