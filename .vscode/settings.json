@@ -17,7 +17,7 @@
   // workbench
   "workbench.editor.enablePreview": false,
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Omni",
+  "workbench.colorTheme": "Default Dark Modern",
 
   // prettier
   "editor.defaultFormatter": "esbenp.prettier-vscode",
