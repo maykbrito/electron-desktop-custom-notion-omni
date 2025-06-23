@@ -147,7 +147,7 @@ body.dark div[style*="rgb(63, 68, 71)"] {
 }
 
 /* code block */
-body.dark .notion-code-block {
+body.dark .notion-code-block, body.dark .notion-code-block [style*='background: rgb(32, 32, 32)'] {
   background: var(--dark) !important;
 }
 body.dark [style*="rgba(255, 255, 255, 0.03)"] {
