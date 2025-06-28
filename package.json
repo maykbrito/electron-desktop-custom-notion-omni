@@ -81,10 +81,20 @@
         },
         {
           "name": "@electron-forge/maker-deb",
-          "config": {}
+          "platforms": [
+            "linux"
+          ],
+          "config": {
+            "name": "notion-omni",
+            "categories": [
+              "Utility"
+            ],
+            "icon": "./assets/icon.png"
+          }
         },
         {
           "name": "@electron-forge/maker-rpm",
+          "platforms": [],
           "config": {}
         }
       ],
